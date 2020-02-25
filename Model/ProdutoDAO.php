@@ -30,6 +30,24 @@ class ProdutoDAO {
        $conn->close();
        return $produtos;
     }
+    function getProduto($id){
+        require_once 'connect.php';
+        $conn = F_conect();
+        $result = mysqli_query($conn, "Select * from produto where id='".$id."'");
+        $i = 0;
+        $produtos= array();
+        if (mysqli_num_rows($result)) {
+            while ($row = $result->fetch_assoc()) {
+                   $produtos[$i]['id'] = $row['id'];
+                   $produtos[$i]['nome'] = $row['nome'];
+                   $produtos[$i]['preco'] = $row['preco'];
+                  
+                    $i++;
+                }
+        }
+       $conn->close();
+       return $produtos;
+    }
     function cadastrar($nome,$preco){
         require_once 'connect.php';
 
@@ -47,6 +65,20 @@ class ProdutoDAO {
 
         $conn->close();
     }
+    function editar($id,$nome,$preco){
+        require_once 'connect.php';
+        $conn = F_conect();
+        $sql = "update produto set nome='".$nome."' , preco='".$preco."' where id='".$id."'";
+        if ($conn->query($sql) == TRUE) {
+                echo "<script language='javascript' type='text/javascript'>"
+                           . "alert('Produto atualizado com sucesso!');";
+                echo "</script>";       
+                            } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        $conn->close();
+    }
     function delete($id) {
         require_once 'connect.php';
 
@@ -58,9 +90,10 @@ class ProdutoDAO {
             . "alert('Produto excluído com sucesso!');";
 
                 echo "</script>";
-            echo "<script language='javascript' type='text/javascript'>
-            window.location.href = 'javascript:window.history.go(-1);';
-            </script>";
+         echo "<script language='javascript' type='text/javascript'>
+window.location.href = 'Produto_listar.php';
+</script>";
+           
         }
 
         $conn->close();

@@ -60,8 +60,7 @@
    
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Vendas</a></li>
+          <li><a href="Venda_listar.php"><span class="glyphicon glyphicon-shopping-cart"></span> Vendas</a></li>
       </ul>
     </div>
   </div>

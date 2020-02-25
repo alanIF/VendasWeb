@@ -9,7 +9,7 @@
     </div>
     <div class="form-group">
       <label for="preco">Preço:</label>
-      <input type="number" class="form-control" id="preco" placeholder="Digite o preço do produto" name="preco">
+      <input type="number" class="form-control" id="preco" step="0.01"  placeholder="Digite o preço do produto" name="preco">
     </div>
   
      <button type="submit" class="btn btn-primary btn-user btn-block" name="botao">Cadastrar</button>
