@@ -20,14 +20,14 @@ class ProdutoController {
     public function excluirProduto($id){
         require_once ('../Model/ProdutoDAO.php');
         $produtos = new ProdutoDAO();
-        $produtos->delete($id);        
+        return $produtos->delete($id);        
         
     }
     public function atualizarProduto($id,$nome,$preco){
         require_once ('../Model/ProdutoDAO.php');
         $produtos = new ProdutoDAO();
-        $produtos->editar($id,$nome,$preco);
-
+        $mensagem= $produtos->editar($id,$nome,$preco);
+        return $mensagem;
     }
     public function getProduto($id){
         require_once '../Model/ProdutoDAO.php';
@@ -38,7 +38,7 @@ class ProdutoController {
     public function cadastrarProduto($nome,$preco){
         require_once '../Model/ProdutoDAO.php';
         $produtos = new ProdutoDAO();
-        $produtos->cadastrar($nome,$preco);    
-        
+        $msg= $produtos->cadastrar($nome,$preco);    
+        return $msg;
     }
 }

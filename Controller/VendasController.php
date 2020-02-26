@@ -20,13 +20,13 @@ class VendasController {
     public function excluirVenda($id){
         require_once ('../Model/VendasDAO.php');
         $vendas = new VendasDAO();
-        $vendas->delete($id);        
+         return $vendas->delete($id);        
         
     }
     public function cadastrarVenda($id_produto,$qtd){
         require_once '../Model/VendasDAO.php';
         $vendas = new VendasDAO();
-        $vendas->cadastrar($id_produto,$qtd);    
+        return $vendas->cadastrar($id_produto,$qtd);    
         
     }
     

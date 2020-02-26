@@ -11,6 +11,7 @@
  *
  * @author PICHAU
  */
+
 class ProdutoDAO {
     function listar(){
         require_once 'connect.php';
@@ -55,12 +56,11 @@ class ProdutoDAO {
         $sql = "INSERT INTO produto(nome, preco)
                 VALUES('" . $nome . "','" . $preco ."' )";
         if ($conn->query($sql) == TRUE) {
-            echo "<script language='javascript' type='text/javascript'>"
-            . "alert('Produto cadastrado com sucesso!');";
-                            echo "</script>";
+            return "Produto cadastrado com sucesso";
+            
 
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            return  "Error: " . $sql . "<br>" . $conn->error;
         }
 
         $conn->close();
@@ -70,11 +70,11 @@ class ProdutoDAO {
         $conn = F_conect();
         $sql = "update produto set nome='".$nome."' , preco='".$preco."' where id='".$id."'";
         if ($conn->query($sql) == TRUE) {
-                echo "<script language='javascript' type='text/javascript'>"
-                           . "alert('Produto atualizado com sucesso!');";
-                echo "</script>";       
+                        return "Produto atualizado com sucesso";
+
+                
                             } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+                                return "Error: " . $sql . "<br>" . $conn->error;
         }
 
         $conn->close();
@@ -86,14 +86,8 @@ class ProdutoDAO {
         $sql = "DELETE FROM produto WHERE id=" . $id ;
 
         if ($conn->query($sql)) {
-            echo "<script language='javascript' type='text/javascript'>"
-            . "alert('Produto excluído com sucesso!');";
-
-                echo "</script>";
-         echo "<script language='javascript' type='text/javascript'>
-window.location.href = 'Produto_listar.php';
-</script>";
-           
+            return "Produto excluído com sucesso";
+            
         }
 
         $conn->close();

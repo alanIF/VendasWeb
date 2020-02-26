@@ -40,12 +40,11 @@ class VendasDAO {
         $sql = "INSERT INTO venda(id_produto, qtd)
                 VALUES('" . $id_produto. "','" . $qtd ."' )";
         if ($conn->query($sql) == TRUE) {
-            echo "<script language='javascript' type='text/javascript'>"
-            . "alert('Venda realizada com sucesso!');";
-                            echo "</script>";
+            return "Venda realizada com sucesso";
+           
 
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+           return  "Error: " . $sql . "<br>" . $conn->error;
         }
 
         $conn->close();
@@ -57,14 +56,10 @@ class VendasDAO {
         $sql = "DELETE FROM venda WHERE id=" . $id ;
 
         if ($conn->query($sql)) {
-            echo "<script language='javascript' type='text/javascript'>"
-            . "alert('Venda excluída com sucesso!');";
+            return "Venda excluída com sucesso";
+          
 
-                echo "</script>";
-                   echo "<script language='javascript' type='text/javascript'>
-window.location.href = 'Venda_listar.php';
-</script>";
-           
+          
         }
 
         $conn->close();

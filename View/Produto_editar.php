@@ -31,7 +31,11 @@
                     
                     if (isset($_POST["botao"])) {
                         
-                        $objControl->atualizarProduto($id,$_POST["nome"], $_POST["preco"]);
+                        $mensagem= $objControl->atualizarProduto($id,$_POST["nome"], $_POST["preco"]);
+                         echo "<script language='javascript' type='text/javascript'>"
+                                  . "alert('".$mensagem."');";
+                                echo "</script>";
+                            
                         echo "<meta HTTP-EQUIV='refresh' CONTENT='1;URL='`Produto_editar.php?id=".$id."'>";
 
                             

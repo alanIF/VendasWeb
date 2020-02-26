@@ -19,8 +19,10 @@
                     if (isset($_POST["botao"])) {
                         require_once '../Controller/ProdutoController.php';
                         $objControl = new ProdutoController();
-                        $objControl->cadastrarProduto($_POST["nome"], $_POST["preco"]);
-
+                        $mensagem = $objControl->cadastrarProduto($_POST["nome"], $_POST["preco"]);
+                                echo "<script language='javascript' type='text/javascript'>"
+                                  . "alert('".$mensagem."');";
+                                echo "</script>";
                             
                       
                     }

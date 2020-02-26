@@ -22,6 +22,7 @@
                                     $objControl = new VendasController();
                                     $dados= $objControl->listar();
                                     $tamanho = count($dados);
+                                    $total_vendas=0;
                                     if ($tamanho > 0) {
                                         for ($i = 0; $i < $tamanho; $i++) {
                                             echo "<tr>";
@@ -29,6 +30,7 @@
                                             echo"<td>" . $dados[$i]['produto'] . "</td>";
                                             echo"<td>" . $dados[$i]['qtd'] . "</td>";
                                             $total = $dados[$i]['qtd']*$dados[$i]['preco'];
+                                            $total_vendas= $total_vendas+$total;
                                             echo "<td>".$total."</td>";
                                             echo"<td>  
                                       <a onclick='return confirmar();' href='Venda_excluir.php?id=" . $dados[$i]['id'] . "'><i class='fa fa-trash' title='Excluir Venda'  aria-hidden='true'></i></a></td></tr>";
@@ -36,6 +38,7 @@
                                         }
                                     
                                     }
+                                    echo "<tr><th colspan='2'> Total: </th><th colspan='2'> ".$total_vendas."</th></tr>";
                                         ?>                                   
 
                                 </tbody>
@@ -69,7 +72,11 @@
                     
                                 if (isset($_POST["botao"])) {
                                         if($_POST["qtd"]>0){
-                                            $objControl->cadastrarVenda($_POST["produto"], $_POST["qtd"]);
+                                           $mensagem=  $objControl->cadastrarVenda($_POST["produto"], $_POST["qtd"]);
+                                             echo "<script language='javascript' type='text/javascript'>"
+            . "alert('".$mensagem."');";
+
+                echo "</script>";
                                           echo "<meta HTTP-EQUIV='refresh' CONTENT='1;URL='Venda_listar.php'>";
 
                                         }

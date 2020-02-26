@@ -7,8 +7,15 @@
 
          $id=(int)$_GET['id'];
         $objControl = new ProdutoController();
-        $objControl->excluirProduto($id);
+        $mensagem= $objControl->excluirProduto($id);
+        echo "<script language='javascript' type='text/javascript'>"
+            . "alert('".$mensagem."');";
 
+                echo "</script>";
+                echo "<script language='javascript' type='text/javascript'>
+       window.location.href = 'Produto_listar.php';
+       </script>";
+           
         
     }else{
         
